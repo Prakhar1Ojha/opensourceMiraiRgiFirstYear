@@ -3,11 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OSS Store - Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: black; color: white  ;">
-    <h1>harsh tripathi</h1>
-    <h2>kaise ho yr </h2>
-    <h4 style="color:red">Hola amigo</h4>
+<body>
+    <nav>
+        <h1><a href="index.html" style="color: white; text-decoration: none;">OSS Store</a></h1>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About / Contribute</a>
+            <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge">2</span></a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero section using Flexbox -->
+        <section class="hero">
+            <h2>Welcome to the Open Source Store!</h2>
+            <p>Learn how to make Pull Requests by adding your own products to this exact website.</p>
+        </section>
+
+        <!-- Categories using Grid -->
+        <section class="categories">
+            <h2>Categories</h2>
+            <div class="category-grid">
+                <div class="category-card">📱 Electronics</div>
+                <div class="category-card">👕 Clothing</div>
+                <div class="category-card">🍕 Food</div>
+                <div class="category-card">📚 Books</div>
+            </div>
+        </section>
+
+        <!-- Products using Grid and Flexbox for Cards -->
+        <section class="products">
+            <div class="products-header">
+                <h2>All Products</h2>
+                <p>Pick an item below, or add yours via PR!</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <h3>Smartphone</h3>
+                    <p class="price">$499.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">💻</div>
+                    <h3>Laptop</h3>
+                    <p class="price">$899.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">🎧</div>
+                    <h3>Headphones</h3>
+                    <p class="price">$99.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">📚</div>
+                    <h3>JavaScript Book</h3>
+                    <p class="price">$29.99</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                
+                <!-- NEW CONTRIBUTORS: Add your product HTML card below this line! -->
+                
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox & CSS Grid.</p>
+    </footer>
 </body>
 </html>
