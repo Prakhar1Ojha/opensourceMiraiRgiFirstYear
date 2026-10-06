@@ -1,0 +1,5 @@
+# CODEOWNERS
+# Global code reviewers for this repository.
+# Any pull request opened will request reviews from these maintainers.
+
+* @sapnilbiswas @dhruveshmishra

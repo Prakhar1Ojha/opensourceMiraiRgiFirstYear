@@ -1,0 +1,36 @@
+{
+  "name": "oss-shopping-cart",
+  "version": "1.0.0",
+  "description": "OSS Shopping Cart - beginner friendly open source repository",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --test tests/**/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshfi/opensourcePrivate.git"
+  },
+  "keywords": [
+    "open-source",
+    "first-timers",
+    "html",
+    "css",
+    "shopping-cart"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harshfi/opensourcePrivate/issues"
+  },
+  "homepage": "https://github.com/harshfi/opensourcePrivate#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.9"
+  }
+}
