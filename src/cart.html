@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart - OSS Store</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <h1><a href="index.html" style="color: white; text-decoration: none">OSS Store</a></h1>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About / Contribute</a>
+        <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge">2</span></a>
+      </div>
+    </nav>
+
+    <main>
+      <h2 style="margin-bottom: 2rem; color: #2c3e50">Shopping Cart</h2>
+
+      <!-- Cart Layout using Grid -->
+      <div class="cart-page-layout">
+        <!-- Cart Items List (Flexbox Column) -->
+        <div class="cart-list">
+          <div class="cart-list-item">
+            <div class="cart-item-details">
+              <div class="cart-item-img">📱</div>
+              <div>
+                <h3>Smartphone</h3>
+                <p style="color: #7f8c8d">Electronics</p>
+              </div>
+            </div>
+            <div class="cart-item-price">
+              <strong class="price">$499.99</strong>
+            </div>
+          </div>
+
+          <div class="cart-list-item">
+            <div class="cart-item-details">
+              <div class="cart-item-img">🎧</div>
+              <div>
+                <h3>Headphones</h3>
+                <p style="color: #7f8c8d">Electronics</p>
+              </div>
+            </div>
+            <div class="cart-item-price">
+              <strong class="price">$99.99</strong>
+            </div>
+          </div>
+
+          <!-- NEW CONTRIBUTORS: Add extra cart items here for practice! -->
+        </div>
+
+        <!-- Cart Summary (Flexbox Column inside Grid area) -->
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span>$599.98</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>$10.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax</span>
+            <span>$48.00</span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span>$657.98</span>
+          </div>
+          <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox & CSS Grid.</p>
+    </footer>
+  </body>
+</html>
