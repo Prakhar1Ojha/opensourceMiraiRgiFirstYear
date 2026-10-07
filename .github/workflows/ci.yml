@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  quality-gate:
-    name: Code Quality & Tests
+  prettier:
+    name: Code Formatting (Prettier)
     runs-on: ubuntu-latest
 
     permissions:
@@ -34,8 +34,48 @@ jobs:
       - name: Check code formatting (Prettier)
         run: npm run format:check
 
+  eslint:
+    name: Code Quality (ESLint)
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
       - name: Lint codebase (ESLint)
         run: npm run lint
+
+  test:
+    name: Automated Tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Run automated test suite
         run: npm test

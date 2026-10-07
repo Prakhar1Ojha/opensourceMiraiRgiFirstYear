@@ -1,4 +1,4 @@
-name: PR Review & Approval Automation
+name: PR Review & Contributor Triage
 
 on:
   pull_request_target:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Process PR Review & Approval Flow
+      - name: Process PR Review Routing & Triage Flow
         uses: actions/github-script@v7
         with:
           script: |
@@ -33,111 +33,80 @@ jobs:
 
             core.info(`PR #${prNumber} by ${prAuthor} (association: ${authorAssoc}). Action: ${action}. Has contributor tag: ${hasContributorTag}`);
 
-            if (hasContributorTag) {
-              core.info(`PR #${prNumber} is tagged as contributor. Fast-tracking and auto-approving...`);
+            // Determine labels to apply
+            const labelsToAdd = [];
 
-              // Remove 'needs-review' if present
-              if (currentLabels.includes('needs-review')) {
-                try {
-                  await github.rest.issues.removeLabel({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: prNumber,
-                    name: 'needs-review'
-                  });
-                } catch (e) {
-                  core.warning(`Could not remove needs-review label: ${e.message}`);
-                }
+            // All PRs need review from maintainers
+            if (!currentLabels.includes('needs-review')) {
+              labelsToAdd.push('needs-review');
+            }
+
+            if (hasContributorTag || authorAssoc === 'CONTRIBUTOR') {
+              core.info(`PR #${prNumber} is from a recognized contributor. Routing for maintainer review without auto-approval...`);
+              if (!currentLabels.includes('contributor')) {
+                labelsToAdd.push('contributor');
               }
+            } else if (isFirstTimer) {
+              core.info(`PR #${prNumber} is from a first-time contributor. Routing for maintainer review...`);
+              if (!currentLabels.includes('first-time-contributor')) {
+                labelsToAdd.push('first-time-contributor');
+              }
+            }
 
-              // Add 'contributor-approved' label
+            if (labelsToAdd.length > 0) {
               try {
                 await github.rest.issues.addLabels({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: prNumber,
-                  labels: ['contributor-approved']
+                  labels: labelsToAdd
                 });
-              } catch (e) {
-                core.warning(`Could not add contributor-approved label: ${e.message}`);
-              }
-
-              // Automatically submit an approval review
-              try {
-                const reviews = await github.rest.pulls.listReviews({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: prNumber
-                });
-                const botUser = context.actor;
-                const alreadyApproved = reviews.data.some(r => r.state === 'APPROVED');
-
-                if (!alreadyApproved) {
-                  await github.rest.pulls.createReview({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    pull_number: prNumber,
-                    event: 'APPROVE',
-                    body: '🎉 **Automated Approval**: This PR has the `contributor` tag and is approved for merge once all CI quality gates pass.'
-                  });
-                  core.info(`Auto-approved PR #${prNumber}.`);
-                }
-              } catch (e) {
-                core.warning(`Could not submit automated review approval: ${e.message}`);
-              }
-
-            } else if (isFirstTimer || action === 'opened') {
-              core.info(`PR #${prNumber} is from a first-time contributor. Routing for maintainer approval...`);
-
-              // Add tracking labels
-              try {
-                await github.rest.issues.addLabels({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: prNumber,
-                  labels: ['first-time-contributor', 'needs-review']
-                });
+                core.info(`Applied labels: ${labelsToAdd.join(', ')}`);
               } catch (e) {
                 core.warning(`Could not apply labels: ${e.message}`);
               }
+            }
 
-              // Filter reviewers so author is not asked to review their own PR
-              const assignableReviewers = targetReviewers.filter(
-                username => username.toLowerCase() !== prAuthor.toLowerCase()
-              );
+            // Request maintainer reviews (excluding author)
+            const assignableReviewers = targetReviewers.filter(
+              username => username.toLowerCase() !== prAuthor.toLowerCase()
+            );
 
-              if (assignableReviewers.length > 0) {
-                try {
-                  await github.rest.pulls.requestReviewers({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    pull_number: prNumber,
-                    reviewers: assignableReviewers
-                  });
-                  core.info(`Requested reviews from: ${assignableReviewers.join(', ')}`);
-                } catch (e) {
-                  core.warning(`Could not request reviewers: ${e.message}`);
-                }
+            if ((action === 'opened' || action === 'reopened') && assignableReviewers.length > 0) {
+              try {
+                await github.rest.pulls.requestReviewers({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                  reviewers: assignableReviewers
+                });
+                core.info(`Requested reviews from: ${assignableReviewers.join(', ')}`);
+              } catch (e) {
+                core.warning(`Could not request reviewers: ${e.message}`);
               }
+            }
 
-              // Post welcoming message on PR open
-              if (action === 'opened') {
-                try {
-                  const mentionList = assignableReviewers.map(u => `@${u}`).join(' and ');
-                  const welcomeBody = `👋 Welcome @${prAuthor}! Thank you for opening your first pull request on the **OSS Shopping Cart** project!\n\n` +
-                    `🔍 Maintainer review has been requested from ${mentionList}.\n\n` +
-                    `📋 **Next steps:**\n` +
-                    `- Ensure CI checks pass (formatting, linting, tests).\n` +
-                    `- Once verified by a maintainer, you will be tagged with the \`contributor\` label for future automated approvals! 🚀`;
+            // Post welcome / info message on PR open
+            if (action === 'opened') {
+              try {
+                const mentionList = assignableReviewers.length > 0
+                  ? assignableReviewers.map(u => `@${u}`).join(' and ')
+                  : 'maintainers';
 
-                  await github.rest.issues.createComment({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    issue_number: prNumber,
-                    body: welcomeBody
-                  });
-                } catch (e) {
-                  core.warning(`Could not post welcome comment: ${e.message}`);
-                }
+                const welcomeBody = `👋 Welcome @${prAuthor}! Thank you for opening your pull request on the **OSS Shopping Cart** project!\n\n` +
+                  `🔍 Maintainer review has been requested from ${mentionList}.\n\n` +
+                  `📋 **Next steps & Policy:**\n` +
+                  `- Automated CI checks (Prettier formatting, ESLint code quality, automated test suite) are triggered automatically without requiring approval.\n` +
+                  `- All pull requests require manual review and approval from repository maintainers before merge.\n` +
+                  `- Recognized contributors do not have auto-approval; every pull request is reviewed by maintainers to maintain quality. 🚀`;
+
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  body: welcomeBody
+                });
+              } catch (e) {
+                core.warning(`Could not post welcome comment: ${e.message}`);
               }
             }

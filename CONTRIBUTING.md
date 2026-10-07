@@ -155,9 +155,15 @@ All tests must pass (✔ green) before submitting your PR.
 - **Designated Reviewers:**
   - `@sapnilbiswas`
   - `@dhruveshmishra`
-- **First-Time Contributors:**
-  - When your PR is opened, it will automatically be assigned to `@sapnilbiswas` and `@dhruveshmishra` and labeled with `first-time-contributor` and `needs-review`.
-  - Maintainers will review your PR and provide feedback.
-- **Tagged Contributors:**
-  - Once verified, maintainers add the `contributor` tag/label to your profile or PR.
-  - Pull requests tagged with `contributor` are fast-tracked and automatically approved once all CI checks pass!
+- **Contributor Triage & Review:**
+  - When your PR is opened, review is requested from `@sapnilbiswas` and `@dhruveshmishra`, and the PR is marked with `needs-review`.
+  - First-time contributors are tagged with `first-time-contributor`.
+  - Recognized contributors are tagged with `contributor`.
+- **Approval Policy:**
+  - All pull requests (including those from recognized contributors) require manual review and approval from repository maintainers before merging. There is no automated approval.
+- **Automated CI Gates:**
+  - Automated CI checks are triggered on every pull request without requiring approval.
+  - Prettier formatting, ESLint code quality, and automated test suite run as separate, independent jobs:
+    1. **Code Formatting (Prettier)**: `npm run format:check`
+    2. **Code Quality (ESLint)**: `npm run lint`
+    3. **Automated Tests**: `npm test`

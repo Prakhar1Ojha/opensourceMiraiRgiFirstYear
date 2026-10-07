@@ -60,5 +60,6 @@ For full details, please read our [Contributing Guide (CONTRIBUTING.md)](CONTRIB
 
 ### 🔄 Review & Approval Flow:
 
-- **First-Time Contributors**: Your PR will be automatically assigned to `@sapnilbiswas` and `@dhruveshmishra` for review, with the `needs-review` label.
-- **Tagged Contributors**: Once tagged with the `contributor` label, your PRs are eligible for automated approval once CI passes!
+- **Maintainer Review**: All pull requests are reviewed by maintainers (`@sapnilbiswas` and `@dhruveshmishra`), with the `needs-review` label.
+- **No Automated Approval**: Recognized contributors do not receive auto-approvals. Every pull request requires manual maintainer review and approval before merging.
+- **Automated CI Checks**: Prettier formatting, ESLint code quality, and the test suite are triggered automatically as separate jobs without requiring approval.
