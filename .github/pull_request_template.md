@@ -43,5 +43,6 @@
 
 ## 👥 Reviewers & Contributor Info
 
-- **First-time contributors:** Your PR will be reviewed by maintainers (**@sapnilbiswas** & **@dhruveshmishra**).
-- **Recognized contributors:** Once tagged with the `contributor` label, your PR will be eligible for automated fast-track approval!
+- **Reviewers:** All pull requests are reviewed by maintainers (**@sapnilbiswas** & **@dhruveshmishra**).
+- **Recognized contributors:** All pull requests require manual review and approval from maintainers before merging; there is no automated PR approval.
+- **Automated CI:** Prettier formatting, ESLint code quality, and automated test suite trigger automatically as separate jobs without requiring approval.

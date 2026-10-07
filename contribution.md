@@ -15,5 +15,5 @@ Please refer to the complete, official guide in [CONTRIBUTING.md](CONTRIBUTING.m
    - `npm test`
 5. Open a Pull Request!
    - **Reviewers**: `@sapnilbiswas` and `@dhruveshmishra`
-   - First-time contributors are routed for review and approval.
-   - PRs tagged with `contributor` are fast-tracked for automated approval.
+   - All PRs are routed for maintainer review and manual approval (no auto-approval for recognized contributors).
+   - CI tests, Prettier, and ESLint run as separate automated jobs without requiring approval.
