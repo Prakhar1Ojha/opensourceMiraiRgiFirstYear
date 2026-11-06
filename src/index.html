@@ -1,11 +1,120 @@
 
-    <footer class="site-footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h4>OSS Store</h4>
-          <p>A beginner-friendly open source store for learning how to make Pull Requests.</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OSS Store - Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <h1>
+        <a href="index.html" class="logo">OSS Store</a>
+      </h1>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About / Contribute</a>
+        <a href="cart.html" class="cart-link">
+          🛒 Cart <span class="cart-badge">2</span>
+        </a>
+      </div>
+
+      <!-- Search Bar -->
+      <form class="search-form" action="index.html" method="get" role="search">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <h2>Welcome to the Open Source Store!</h2>
+        <p>
+          Learn how to make Pull Requests by adding your own products to this
+          exact website.
+        </p>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="categories">
+        <h2>Categories</h2>
+
+        <div class="category-grid">
+          <div class="category-card">📱 Electronics</div>
+          <div class="category-card">👕 Clothing</div>
+          <div class="category-card">🍕 Food</div>
+          <div class="category-card">📚 Books</div>
+        </div>
+      </section>
+
+      <!-- Products Section -->
+      <section class="products">
+        <div class="products-header">
+          <h2>All Products</h2>
+          <p>Pick an item below, or add yours via PR!</p>
         </div>
 
+        <div class="product-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-image">📱</div>
+            <h3>Smartphone</h3>
+            <p class="price">$499.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <div class="product-image">💻</div>
+            <h3>Laptop</h3>
+            <p class="price">$899.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card">
+            <div class="product-image">🎧</div>
+            <h3>Headphones</h3>
+            <p class="price">$99.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card">
+            <div class="product-image">📚</div>
+            <h3>JavaScript Book</h3>
+            <p class="price">$29.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+
+          <!-- NEW CONTRIBUTORS: Add your product HTML card below this line! -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+
+        <!-- About Section -->
+        <div class="footer-section">
+          <h4>OSS Store</h4>
+          <p>
+            A beginner-friendly open source store for learning how to make Pull Requests.
+          </p>
+        </div>
+
+        <!-- Navigation Links -->
         <div class="footer-section">
           <h4>Links</h4>
           <ul>
@@ -15,6 +124,7 @@
           </ul>
         </div>
 
+        <!-- Contact Information -->
         <div class="footer-section">
           <h4>Contact Us</h4>
           <ul>
@@ -23,20 +133,27 @@
           </ul>
         </div>
 
+        <!-- Social Links -->
         <div class="footer-section">
           <h4>Socials</h4>
           <ul>
             <li>
-              <a href="https://github.com/harshfi/opensourceMiraiRgiFirstYear">GitHub</a>
+              <a href="https://github.com/harshfi/opensourceMiraiRgiFirstYear">
+                GitHub
+              </a>
             </li>
             <li><a href="https://x.com">X (Twitter)</a></li>
             <li><a href="https://www.instagram.com">Instagram</a></li>
           </ul>
         </div>
+
       </div>
 
+      <!-- Copyright -->
       <div class="footer-bottom">
-        <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox & CSS Grid.</p>
+        <p>
+          &copy; 2026 OSS Shopping Cart. Built with Flexbox & CSS Grid.
+        </p>
       </div>
     </footer>
   </body>
