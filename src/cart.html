@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,14 +7,28 @@
     <title>Your Cart - OSS Store</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <nav>
-      <h1><a href="index.html" style="color: white; text-decoration: none">OSS Store</a></h1>
+      <a href="index.html" class="logo">OSS Store</a>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About / Contribute</a>
-        <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge">2</span></a>
+        <a href="cart.html" class="cart-link">
+          🛒 Cart <span class="cart-badge">2</span>
+        </a>
       </div>
+
+      <form class="search-form" action="index.html" method="get" role="search">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+        <button type="submit">Search</button>
+      </form>
     </nav>
 
     <main>
@@ -31,6 +46,7 @@
                 <p style="color: #7f8c8d">Electronics</p>
               </div>
             </div>
+
             <div class="cart-item-price">
               <strong class="price">$499.99</strong>
             </div>
@@ -44,6 +60,7 @@
                 <p style="color: #7f8c8d">Electronics</p>
               </div>
             </div>
+
             <div class="cart-item-price">
               <strong class="price">$99.99</strong>
             </div>
@@ -55,22 +72,27 @@
         <!-- Cart Summary (Flexbox Column inside Grid area) -->
         <div class="cart-summary">
           <h3>Order Summary</h3>
+
           <div class="summary-row">
             <span>Subtotal</span>
             <span>$599.98</span>
           </div>
+
           <div class="summary-row">
             <span>Shipping</span>
             <span>$10.00</span>
           </div>
+
           <div class="summary-row">
             <span>Tax</span>
             <span>$48.00</span>
           </div>
+
           <div class="summary-total">
             <span>Total</span>
             <span>$657.98</span>
           </div>
+
           <button class="checkout-btn">Proceed to Checkout</button>
         </div>
       </div>

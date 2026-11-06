@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,26 +7,48 @@
     <title>OSS Store - Home</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
+    <!-- Navigation Bar -->
     <nav>
-      <h1><a href="index.html" style="color: white; text-decoration: none">OSS Store</a></h1>
+      <h1>
+        <a href="index.html" class="logo">OSS Store</a>
+      </h1>
+
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About / Contribute</a>
-        <a href="cart.html" class="cart-link">🛒 Cart <span class="cart-badge">2</span></a>
+        <a href="cart.html" class="cart-link">
+          🛒 Cart <span class="cart-badge">2</span>
+        </a>
       </div>
+
+      <!-- Search Bar -->
+      <form class="search-form" action="index.html" method="get" role="search">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+        <button type="submit">Search</button>
+      </form>
     </nav>
 
     <main>
-      <!-- Hero section using Flexbox -->
+      <!-- Hero Section -->
       <section class="hero">
         <h2>Welcome to the Open Source Store!</h2>
-        <p>Learn how to make Pull Requests by adding your own products to this exact website.</p>
+        <p>
+          Learn how to make Pull Requests by adding your own products to this
+          exact website.
+        </p>
       </section>
 
-      <!-- Categories using Grid -->
+      <!-- Categories Section -->
       <section class="categories">
         <h2>Categories</h2>
+
         <div class="category-grid">
           <div class="category-card">📱 Electronics</div>
           <div class="category-card">👕 Clothing</div>
@@ -34,7 +57,7 @@
         </div>
       </section>
 
-      <!-- Products using Grid and Flexbox for Cards -->
+      <!-- Products Section -->
       <section class="products">
         <div class="products-header">
           <h2>All Products</h2>
@@ -79,6 +102,7 @@
       </section>
     </main>
 
+    <!-- Footer -->
     <footer>
       <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox & CSS Grid.</p>
     </footer>
