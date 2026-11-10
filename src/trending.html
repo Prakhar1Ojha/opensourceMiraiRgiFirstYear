@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OSS Store - Trending</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <h1>
+        <a href="index.html" class="logo">OSS Store</a>
+      </h1>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About / Contribute</a>
+        <a href="cart.html" class="cart-link"> 🛒 Cart <span class="cart-badge">2</span> </a>
+        <a href="profile.html">Profile</a>
+      </div>
+
+      <!-- Search Bar -->
+      <form class="search-form" action="index.html" method="get" role="search">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <h2>🔥 Trending Now</h2>
+        <p>
+          Discover our most popular products loved and recommended by the open source community!
+        </p>
+      </section>
+
+      <!-- Trending Products Section -->
+      <section class="products">
+        <div class="products-header">
+          <h2>Top Selling & Community Favorites</h2>
+          <p>Hand-picked community favorites trending this week.</p>
+        </div>
+
+        <div class="product-grid">
+          <!-- Trending Item 1 -->
+          <div class="product-card">
+            <span class="badge badge-sale">Hot!</span>
+            <div class="product-image">⌨️</div>
+            <h3>Mechanical Keyboard</h3>
+            <p class="price">$89.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+
+          <!-- Trending Item 2 -->
+          <div class="product-card">
+            <span class="badge badge-new">Trending</span>
+            <div class="product-image">🎧</div>
+            <h3>Noise-Cancelling Headphones</h3>
+            <p class="price">$129.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+
+          <!-- Trending Item 3 -->
+          <div class="product-card">
+            <span class="badge badge-sale">Popular</span>
+            <div class="product-image">👕</div>
+            <h3>Developer Hoodie</h3>
+            <p class="price">$45.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+
+          <!-- Trending Item 4 -->
+          <div class="product-card">
+            <span class="badge badge-new">Best Seller</span>
+            <div class="product-image">📚</div>
+            <h3>Git & GitHub Mastery Guide</h3>
+            <p class="price">$24.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- About Us -->
+        <div class="footer-col">
+          <h3>About Us</h3>
+          <p>
+            OSS Store is an open-source shopping cart project designed to help beginners learn Git,
+            HTML, and CSS through real-world contributions.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trending.html">Trending</a></li>
+            <li><a href="about.html">About / Contribute</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p>Questions or feedback? Connect with our project maintainers:</p>
+          <ul class="footer-contact-list">
+            <li><span>Maintainer:</span> @sapnilbiswas</li>
+            <li><span>Maintainer:</span> @dhruveshmishra</li>
+          </ul>
+        </div>
+
+        <!-- Follow Us -->
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <p>Follow our project and contribute on GitHub:</p>
+          <ul class="footer-links">
+            <li>
+              <a
+                href="https://github.com/harshfi/opensourceMiraiRgiFirstYear"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub Repository
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright Information -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox &amp; CSS Grid.</p>
+      </div>
+    </footer>
+  </body>
+</html>

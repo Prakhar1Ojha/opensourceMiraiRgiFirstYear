@@ -113,7 +113,7 @@ test("about.html contributor cards follow proper structure", () => {
 });
 
 test("All relative navigation links point to existing files", () => {
-  const pages = ["src/index.html", "src/about.html", "src/cart.html"];
+  const pages = ["src/index.html", "src/about.html", "src/cart.html", "src/trending.html"];
 
   for (const page of pages) {
     const html = readFile(page);
@@ -129,6 +129,29 @@ test("All relative navigation links point to existing files", () => {
       );
     }
   }
+});
+
+test("trending.html contains valid semantic HTML structure and product cards", () => {
+  const html = readFile("src/trending.html");
+
+  assert.match(html, /<!DOCTYPE html>/i, "trending.html must have <!DOCTYPE html>");
+  assert.match(html, /<html\s+lang=["']en["']>/i, "trending.html must specify lang='en'");
+  assert.match(html, /<nav[\s>]/, "trending.html must include a <nav> element");
+  assert.match(html, /<main[\s>]/, "trending.html must include a <main> element");
+  assert.match(html, /<footer[\s>]/, "trending.html must include a <footer> element");
+  assert.match(html, /href=["']style\.css["']/, "trending.html must link style.css");
+
+  assert.match(
+    html,
+    /class=["'][^"']*product-grid[^"']*["']/,
+    "trending.html must contain a product-grid container"
+  );
+
+  const chunks = html.split(/<div\s+class=["'][^"']*product-card[^"']*["']>/i).slice(1);
+  assert.ok(
+    chunks.length >= 3,
+    `Expected at least 3 trending product cards, found ${chunks.length}`
+  );
 });
 
 test("style.css contains core layout and styling rules", () => {
