@@ -165,6 +165,7 @@ test("style.css contains core layout and styling rules", () => {
     ".add-to-cart",
     ".nav-links",
     ".hero",
+    ".cart-page-font",
   ];
 
   for (const selector of requiredSelectors) {
@@ -302,4 +303,30 @@ test("product details pages contain semantic HTML, images, prices, descriptions,
       `${page} must contain an add-to-cart button`
     );
   }
+});
+
+test("cart.html applies cart-page-font styling class and font link", () => {
+  const html = readFile("src/cart.html");
+  const css = readFile("src/style.css");
+
+  // Verify class exists in CSS and defines font-family
+  assert.match(
+    css,
+    /\.cart-page-font\s*\{[^}]*font-family:/,
+    "style.css must define font-family under .cart-page-font"
+  );
+
+  // Verify cart.html applies the class
+  assert.match(
+    html,
+    /<(?:main|body)[^>]*class=["'][^"']*cart-page-font[^"']*["']/,
+    "cart.html must apply .cart-page-font to <main> or <body>"
+  );
+
+  // Verify font link
+  assert.match(
+    html,
+    /fonts\.googleapis\.com\/css2\?family=/,
+    "cart.html should include a font link from fonts.googleapis.com"
+  );
 });

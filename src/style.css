@@ -530,6 +530,10 @@ main {
 }
 
 /* Dedicated Cart Page Layout (Grid & Flexbox) */
+.cart-page-font {
+  font-family: "Plus Jakarta Sans", "Trebuchet MS", "Lucida Sans Unicode", sans-serif;
+}
+
 .cart-page-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
