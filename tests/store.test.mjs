@@ -171,3 +171,83 @@ test("style.css contains core layout and styling rules", () => {
     assert.ok(css.includes(selector), `style.css is missing required selector "${selector}"`);
   }
 });
+
+test("cart.html contains valid semantic HTML structure, items, and accurate summary calculations", () => {
+  const html = readFile("src/cart.html");
+
+  assert.match(html, /<!DOCTYPE html>/i, "cart.html must have <!DOCTYPE html>");
+  assert.match(html, /<html\s+lang=["']en["']>/i, "cart.html must specify lang='en'");
+  assert.match(html, /<nav[\s>]/, "cart.html must include a <nav> element");
+  assert.match(html, /<main[\s>]/, "cart.html must include a <main> element");
+  assert.match(html, /<footer[\s>]/, "cart.html must include a <footer> element");
+  assert.match(html, /href=["']style\.css["']/, "cart.html must link style.css");
+
+  // Check cart-badge
+  assert.match(
+    html,
+    /<span\s+class=["']cart-badge["']>\s*3\s*<\/span>/,
+    "cart badge should reflect 3 items"
+  );
+
+  // Check cart-list exists
+  assert.match(
+    html,
+    /class=["'][^"']*cart-list[^"']*["']/,
+    "cart.html must contain a cart-list container"
+  );
+
+  // Check cart-summary exists
+  assert.match(
+    html,
+    /class=["'][^"']*cart-summary[^"']*["']/,
+    "cart.html must contain a cart-summary container"
+  );
+
+  // Verify cart items
+  const items = html.split(/<div\s+class=["'][^"']*cart-list-item[^"']*["']>/i).slice(1);
+  assert.equal(items.length, 3, `Expected exactly 3 items in cart.html, found ${items.length}`);
+
+  let calculatedSubtotal = 0;
+  for (const item of items) {
+    const hasImage = /class=["'][^"']*cart-item-img[^"']*["']/.test(item);
+    assert.ok(hasImage, "Cart item is missing an image/emoji element");
+
+    const hasTitle = /<h3[\s>][\s\S]*?<\/h3>/i.test(item);
+    assert.ok(hasTitle, "Cart item is missing an <h3> title");
+
+    const priceMatch = item.match(/\$([0-9,]+\.[0-9]{2})/);
+    assert.ok(priceMatch, "Cart item is missing a formatted price");
+    const priceVal = parseFloat(priceMatch[1].replace(/,/g, ""));
+    assert.ok(priceVal > 0, "Cart item price must be greater than 0");
+    calculatedSubtotal += priceVal;
+  }
+
+  // Extract summary values
+  const subtotalMatch = html.match(/<span>Subtotal<\/span>\s*<span>\$([0-9,]+\.[0-9]{2})<\/span>/i);
+  assert.ok(subtotalMatch, "Cart summary must include a Subtotal row");
+  const subtotal = parseFloat(subtotalMatch[1].replace(/,/g, ""));
+
+  const shippingMatch = html.match(/<span>Shipping<\/span>\s*<span>\$([0-9,]+\.[0-9]{2})<\/span>/i);
+  assert.ok(shippingMatch, "Cart summary must include a Shipping row");
+  const shipping = parseFloat(shippingMatch[1].replace(/,/g, ""));
+
+  const taxMatch = html.match(/<span>Tax<\/span>\s*<span>\$([0-9,]+\.[0-9]{2})<\/span>/i);
+  assert.ok(taxMatch, "Cart summary must include a Tax row");
+  const tax = parseFloat(taxMatch[1].replace(/,/g, ""));
+
+  const totalMatch = html.match(/<span>Total<\/span>\s*<span>\$([0-9,]+\.[0-9]{2})<\/span>/i);
+  assert.ok(totalMatch, "Cart summary must include a Total row");
+  const total = parseFloat(totalMatch[1].replace(/,/g, ""));
+
+  // Check math accuracy
+  assert.equal(
+    subtotal.toFixed(2),
+    calculatedSubtotal.toFixed(2),
+    "Subtotal should match the sum of item prices"
+  );
+  assert.equal(
+    total.toFixed(2),
+    (subtotal + shipping + tax).toFixed(2),
+    "Total should equal Subtotal + Shipping + Tax"
+  );
+});
