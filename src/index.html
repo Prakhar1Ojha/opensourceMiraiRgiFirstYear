@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OSS Store - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -16,8 +22,10 @@
 
       <div class="nav-links">
         <a href="index.html">Home</a>
+        <a href="trending.html">Trending</a>
         <a href="about.html">About / Contribute</a>
-        <a href="cart.html" class="cart-link"> 🛒 Cart <span class="cart-badge">2</span> </a>
+        <a href="cart.html" class="cart-link"> 🛒 Cart <span class="cart-badge">3</span> </a>
+        <a href="profile.html">Profile</a>
       </div>
 
       <!-- Search Bar -->
@@ -44,10 +52,10 @@
         <h2>Categories</h2>
 
         <div class="category-grid">
-          <div class="category-card">📱 Electronics</div>
-          <div class="category-card">👕 Clothing</div>
-          <div class="category-card">🍕 Food</div>
-          <div class="category-card">📚 Books</div>
+          <a href="categories/electronics.html" class="category-card">📱 Electronics</a>
+          <a href="categories/clothing.html" class="category-card">👕 Clothing</a>
+          <a href="categories/food.html" class="category-card">🍕 Food</a>
+          <a href="categories/books.html" class="category-card">📚 Books</a>
         </div>
       </section>
 
@@ -61,6 +69,7 @@
         <div class="product-grid">
           <!-- Product 1 -->
           <div class="product-card">
+            <span class="badge badge-sale">Sale!</span>
             <div class="product-image">📱</div>
             <h3>Smartphone</h3>
             <p class="price">$499.99</p>
@@ -77,6 +86,7 @@
 
           <!-- Product 3 -->
           <div class="product-card">
+            <span class="badge badge-new">New!</span>
             <div class="product-image">🎧</div>
             <h3>Headphones</h3>
             <p class="price">$99.99</p>
@@ -96,50 +106,59 @@
       </section>
     </main>
 
-    <!-- Enhanced Footer -->
     <footer class="site-footer">
       <div class="footer-container">
-        <!-- About Section -->
-        <div class="footer-section">
-          <h4>OSS Store</h4>
-          <p>A beginner-friendly open source store for learning how to make Pull Requests.</p>
+        <!-- About Us -->
+        <div class="footer-col">
+          <h3>About Us</h3>
+          <p>
+            OSS Store is an open-source shopping cart project designed to help beginners learn Git,
+            HTML, and CSS through real-world contributions.
+          </p>
         </div>
 
-        <!-- Navigation Links -->
-        <div class="footer-section">
-          <h4>Links</h4>
-          <ul>
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
+            <li><a href="trending.html">Trending</a></li>
             <li><a href="about.html">About / Contribute</a></li>
-            <li><a href="cart.html">Cart</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
           </ul>
         </div>
 
-        <!-- Contact Information -->
-        <div class="footer-section">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>support@ossstore.example</li>
-            <li>+91 00000 00000</li>
+        <!-- Contact Us -->
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p>Questions or feedback? Connect with our project maintainers:</p>
+          <ul class="footer-contact-list">
+            <li><span>Maintainer:</span> @sapnilbiswas</li>
+            <li><span>Maintainer:</span> @dhruveshmishra</li>
           </ul>
         </div>
 
-        <!-- Social Links -->
-        <div class="footer-section">
-          <h4>Socials</h4>
-          <ul>
+        <!-- Follow Us -->
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <p>Follow our project and contribute on GitHub:</p>
+          <ul class="footer-links">
             <li>
-              <a href="https://github.com/harshfi/opensourceMiraiRgiFirstYear"> GitHub </a>
+              <a
+                href="https://github.com/harshfi/opensourceMiraiRgiFirstYear"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub Repository
+              </a>
             </li>
-            <li><a href="https://x.com">X (Twitter)</a></li>
-            <li><a href="https://www.instagram.com">Instagram</a></li>
           </ul>
         </div>
       </div>
 
-      <!-- Copyright -->
+      <!-- Copyright Information -->
       <div class="footer-bottom">
-        <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox & CSS Grid.</p>
+        <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox &amp; CSS Grid.</p>
       </div>
     </footer>
   </body>

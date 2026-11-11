@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile - OSS Store</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <h1>
+        <a href="index.html" class="logo">OSS Store</a>
+      </h1>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About / Contribute</a>
+        <a href="cart.html" class="cart-link"> 🛒 Cart <span class="cart-badge">3</span> </a>
+        <a href="profile.html">Profile</a>
+      </div>
+
+      <!-- Search Bar -->
+      <form class="search-form" action="index.html" method="get" role="search">
+        <input
+          type="search"
+          name="q"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+        <button type="submit">Search</button>
+      </form>
+    </nav>
+
+    <main>
+      <div class="profile-container">
+        <div class="profile-card">
+          <div class="avatar profile-avatar">👤</div>
+          <h2>Alex Johnson</h2>
+          <p class="profile-email">alex.johnson@example.com</p>
+
+          <div class="profile-info-grid">
+            <div class="profile-info-item">
+              <span class="info-label">Member Since</span>
+              <span class="info-value">January 2026</span>
+            </div>
+            <div class="profile-info-item">
+              <span class="info-label">Role</span>
+              <span class="info-value">Contributor</span>
+            </div>
+            <div class="profile-info-item">
+              <span class="info-label">Orders</span>
+              <span class="info-value">5 completed</span>
+            </div>
+            <div class="profile-info-item">
+              <span class="info-label">Location</span>
+              <span class="info-value">San Francisco, CA</span>
+            </div>
+          </div>
+
+          <button class="edit-profile-btn" type="button">Edit Profile</button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- About Us -->
+        <div class="footer-col">
+          <h3>About Us</h3>
+          <p>
+            OSS Store is an open-source shopping cart project designed to help beginners learn Git,
+            HTML, and CSS through real-world contributions.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="trending.html">Trending</a></li>
+            <li><a href="about.html">About / Contribute</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p>Questions or feedback? Connect with our project maintainers:</p>
+          <ul class="footer-contact-list">
+            <li><span>Maintainer:</span> @sapnilbiswas</li>
+            <li><span>Maintainer:</span> @dhruveshmishra</li>
+          </ul>
+        </div>
+
+        <!-- Follow Us -->
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+          <p>Follow our project and contribute on GitHub:</p>
+          <ul class="footer-links">
+            <li>
+              <a
+                href="https://github.com/harshfi/opensourceMiraiRgiFirstYear"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub Repository
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright Information -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 OSS Shopping Cart. Built with Flexbox &amp; CSS Grid.</p>
+      </div>
+    </footer>
+  </body>
+</html>
