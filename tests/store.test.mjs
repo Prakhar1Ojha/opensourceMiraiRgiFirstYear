@@ -251,3 +251,55 @@ test("cart.html contains valid semantic HTML structure, items, and accurate summ
     "Total should equal Subtotal + Shipping + Tax"
   );
 });
+
+test("product details pages contain semantic HTML, images, prices, descriptions, and specifications", () => {
+  const productPages = [
+    "src/products/smartphone.html",
+    "src/products/laptop.html",
+    "src/products/headphones.html",
+    "src/products/javascript-book.html",
+  ];
+
+  for (const page of productPages) {
+    const html = readFile(page);
+
+    assert.match(html, /<!DOCTYPE html>/i, `${page} must have <!DOCTYPE html>`);
+    assert.match(html, /<html\s+lang=["']en["']>/i, `${page} must specify lang='en'`);
+    assert.match(html, /<nav[\s>]/, `${page} must include a <nav> element`);
+    assert.match(html, /<main[\s>]/, `${page} must include a <main> element`);
+    assert.match(html, /<footer[\s>]/, `${page} must include a <footer> element`);
+    assert.match(html, /href=["']\.\.\/style\.css["']/, `${page} must link ../style.css`);
+
+    // Verify product details container, image, price, description, and specs table
+    assert.match(
+      html,
+      /class=["'][^"']*product-detail-container[^"']*["']/,
+      `${page} must contain .product-detail-container`
+    );
+    assert.match(
+      html,
+      /class=["'][^"']*product-detail-image-box[^"']*["']/,
+      `${page} must contain .product-detail-image-box`
+    );
+    assert.match(
+      html,
+      /class=["'][^"']*product-detail-price[^"']*["']/,
+      `${page} must contain .product-detail-price`
+    );
+    assert.match(
+      html,
+      /class=["'][^"']*product-detail-description[^"']*["']/,
+      `${page} must contain .product-detail-description`
+    );
+    assert.match(
+      html,
+      /class=["'][^"']*product-specs-table[^"']*["']/,
+      `${page} must contain a .product-specs-table`
+    );
+    assert.match(
+      html,
+      /class=["'][^"']*add-to-cart[^"']*["']/,
+      `${page} must contain an add-to-cart button`
+    );
+  }
+});
